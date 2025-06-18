@@ -16,7 +16,7 @@ const MainContent = () => {
             <p className="text-sm text-gray-500 mb-1">Monday, February 17</p>
             <h1 className="text-2xl font-semibold text-gray-900">Good afternoon, Daisy</h1>
           </div>
-          <button className="flex items-center px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700">
+          <button className="flex items-center px-4 py-2 text-sm font-medium text-accent-600 hover:text-accent-700">
             <span className="mr-2">⚙️</span>
             Customize
           </button>

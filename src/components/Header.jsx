@@ -8,39 +8,48 @@ import {
 
 const Header = () => {
   return (
-    <header className="bg-white border-b border-gray-200 px-6 py-4">
-      <div className="flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center">
-          <div className="w-8 h-8 bg-gray-800 rounded flex items-center justify-center mr-3">
-            <span className="text-white font-bold text-sm">O</span>
+    <header className="w-full bg-white border-b border-gray-200 sticky top-0 z-50">
+      <div className="w-full px-6 py-4">
+        <div className="flex items-center justify-between w-full">
+          {/* Logo Section */}
+          <div className="logo-container">
+            <div className="logo-icon">
+              <span className="text-white font-bold text-sm tracking-tight">O</span>
+            </div>
+            <span className="logo-text">Oyster</span>
           </div>
-          <span className="text-xl font-semibold text-gray-800">Oyster</span>
-        </div>
 
-        {/* Search Bar */}
-        <div className="flex-1 max-w-md mx-8">
-          <div className="relative">
-            <MagnifyingGlassIcon className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search companies, team members, invoices..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
+          {/* Search Bar */}
+          <div className="flex-1 max-w-2xl mx-6">
+            <div className="relative">
+              <MagnifyingGlassIcon className="w-5 h-5 absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search companies, team members, invoices..."
+                className="search-input w-full"
+              />
+            </div>
           </div>
-        </div>
 
-        {/* Right side icons */}
-        <div className="flex items-center space-x-4">
-          <div className="relative">
-            <BellIcon className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer" />
-            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-              5
-            </span>
-          </div>
-          <Cog6ToothIcon className="w-6 h-6 text-gray-600 hover:text-gray-800 cursor-pointer" />
-          <div className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center">
-            <span className="text-white text-sm font-medium">D</span>
+          {/* Right side actions */}
+          <div className="header-actions">
+            {/* Notifications */}
+            <div className="relative">
+              <button className="action-button text-gray-600 hover:text-gray-900">
+                <BellIcon className="w-5 h-5" />
+                <span className="notification-badge">5</span>
+              </button>
+            </div>
+            
+            {/* Settings */}
+            <button className="action-button text-gray-600 hover:text-gray-900">
+              <Cog6ToothIcon className="w-5 h-5" />
+            </button>
+            
+            {/* User Avatar */}
+            <div className="user-avatar">
+              <span className="text-white text-sm font-medium">D</span>
+            </div>
           </div>
         </div>
       </div>

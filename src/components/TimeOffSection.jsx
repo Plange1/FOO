@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 
 const TimeOffSection = () => {
-  const requests = [
+  const [activeTab, setActiveTab] = useState('pending-requests');
+
+  const pendingRequests = [
     {
       id: 1,
       name: 'Lewis Bourne',
@@ -41,31 +43,79 @@ const TimeOffSection = () => {
     }
   ];
 
+  const approvedRequests = [
+    {
+      id: 5,
+      name: 'Marcus Thompson',
+      role: 'Product Designer',
+      avatar: 'MT',
+      dates: '20 - 24 Feb',
+      duration: 'PTO • 5 days',
+      action: 'Approved'
+    },
+    {
+      id: 6,
+      name: 'Elena Rodriguez',
+      role: 'Frontend Developer',
+      avatar: 'ER',
+      dates: '15 - 22 Mar',
+      duration: 'PTO • 6 days',
+      action: 'Approved'
+    },
+    {
+      id: 7,
+      name: 'James Wilson',
+      role: 'Data Analyst',
+      avatar: 'JW',
+      dates: '5 - 9 Apr',
+      duration: 'PTO • 4 days',
+      action: 'Approved'
+    }
+  ];
+
+  const currentRequests = activeTab === 'pending-requests' ? pendingRequests : approvedRequests;
+
+  const tabs = [
+    { 
+      id: 'pending-requests', 
+      label: 'Pending requests', 
+      count: pendingRequests.length 
+    },
+    { 
+      id: 'approved', 
+      label: 'Approved', 
+      count: approvedRequests.length 
+    }
+  ];
+
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
-          <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3">
-            <CalendarIcon className="w-4 h-4 text-gray-600" />
+          <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+            <CalendarIcon className="w-4 h-4 text-blue-600" />
           </div>
           <h2 className="text-lg font-semibold text-gray-900">Time off</h2>
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="flex space-x-6 mb-6">
-        <button className="flex items-center text-sm font-medium text-blue-600 border-b-2 border-blue-600 pb-2">
-          Requests
-          <span className="ml-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">14</span>
-        </button>
-        <button className="text-sm font-medium text-gray-500 pb-2">
-          Upcoming
-        </button>
+      {/* Interactive Tabs */}
+      <div className="tab-container">
+        {tabs.map((tab) => (
+          <div
+            key={tab.id}
+            className={`tab-item ${activeTab === tab.id ? 'active' : 'inactive'}`}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+            <span className="tab-badge">{tab.count}</span>
+          </div>
+        ))}
       </div>
 
       {/* Request List */}
       <div className="space-y-4">
-        {requests.map((request) => (
+        {currentRequests.map((request) => (
           <div key={request.id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
             <div className="flex items-center flex-1">
               <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
@@ -79,7 +129,11 @@ const TimeOffSection = () => {
                 <p className="text-sm font-medium text-gray-900">{request.dates}</p>
                 <p className="text-xs text-gray-500">{request.duration}</p>
               </div>
-              <button className="px-3 py-1 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded hover:bg-gray-50">
+              <button className={`px-3 py-1 text-xs font-medium rounded ${
+                activeTab === 'pending-requests' 
+                  ? 'text-gray-600 bg-white border border-gray-200 hover:bg-gray-50'
+                  : 'text-green-700 bg-green-50 border border-green-200'
+              }`}>
                 {request.action}
               </button>
             </div>
@@ -88,7 +142,7 @@ const TimeOffSection = () => {
       </div>
 
       <div className="mt-4 text-center">
-        <button className="text-sm font-medium text-blue-600 hover:text-blue-700">
+        <button className="text-sm font-medium text-accent-600 hover:text-accent-700">
           View requests →
         </button>
       </div>

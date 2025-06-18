@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ClockIcon, CalendarIcon } from '@heroicons/react/24/outline';
 
 const TimeTrackingSection = () => {
-  const entries = [
+  const [activeTab, setActiveTab] = useState('pending-approval');
+
+  const pendingApprovalEntries = [
     {
       id: 1,
       name: 'Jason Kai',
@@ -42,36 +44,80 @@ const TimeTrackingSection = () => {
     }
   ];
 
+  const clarificationEntries = [
+    {
+      id: 6,
+      name: 'Alex Chen',
+      month: 'March 2025',
+      status: 'Missing hours',
+      badge: '❓',
+      action: 'Clarify'
+    },
+    {
+      id: 7,
+      name: 'Maria Garcia',
+      month: 'March 2025',
+      status: 'Project allocation unclear',
+      badge: '❓',
+      action: 'Clarify'
+    },
+    {
+      id: 8,
+      name: 'Tom Wilson',
+      month: 'March 2025',
+      status: 'Weekend work',
+      badge: '❓',
+      action: 'Clarify'
+    }
+  ];
+
+  const currentEntries = activeTab === 'pending-approval' ? pendingApprovalEntries : clarificationEntries;
+
+  const tabs = [
+    { 
+      id: 'pending-approval', 
+      label: 'Pending approval', 
+      count: pendingApprovalEntries.length 
+    },
+    { 
+      id: 'clarification', 
+      label: 'Clarification requested', 
+      count: clarificationEntries.length 
+    }
+  ];
+
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
-          <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3">
-            <ClockIcon className="w-4 h-4 text-gray-600" />
+          <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+            <ClockIcon className="w-4 h-4 text-purple-600" />
           </div>
           <h2 className="text-lg font-semibold text-gray-900">Time tracking</h2>
         </div>
-        <div className="flex items-center text-sm text-gray-500">
-          <CalendarIcon className="w-4 h-4 mr-1" />
-          March 2025
-        </div>
+        <button className="flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 border border-gray-200 rounded-lg hover:bg-gray-50">
+          <CalendarIcon className="w-4 h-4 mr-2" />
+          This month
+        </button>
       </div>
 
-      {/* Tabs */}
-      <div className="flex space-x-6 mb-6">
-        <button className="flex items-center text-sm font-medium text-blue-600 border-b-2 border-blue-600 pb-2">
-          Pending approval
-          <span className="ml-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">20</span>
-        </button>
-        <button className="text-sm font-medium text-gray-500 pb-2">
-          Clarification requested
-          <span className="ml-2 bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">8</span>
-        </button>
+      {/* Interactive Tabs */}
+      <div className="tab-container">
+        {tabs.map((tab) => (
+          <div
+            key={tab.id}
+            className={`tab-item ${activeTab === tab.id ? 'active' : 'inactive'}`}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+            <span className="tab-badge">{tab.count}</span>
+          </div>
+        ))}
       </div>
 
       {/* Time Tracking List */}
       <div className="space-y-3">
-        {entries.map((entry) => (
+        {currentEntries.map((entry) => (
           <div key={entry.id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
             <div className="flex items-center flex-1">
               <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
@@ -86,7 +132,11 @@ const TimeTrackingSection = () => {
               {entry.status && (
                 <div className="flex items-center mr-3">
                   {entry.badge && <span className="mr-1">{entry.badge}</span>}
-                  <span className="text-xs text-orange-600">{entry.status}</span>
+                  <span className={`text-xs ${
+                    activeTab === 'pending-approval' ? 'text-orange-600' : 'text-blue-600'
+                  }`}>
+                    {entry.status}
+                  </span>
                 </div>
               )}
               <button className="px-3 py-1 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded hover:bg-gray-50">
@@ -98,7 +148,7 @@ const TimeTrackingSection = () => {
       </div>
 
       <div className="mt-4 text-center">
-        <button className="text-sm font-medium text-blue-600 hover:text-blue-700">
+        <button className="text-sm font-medium text-accent-600 hover:text-accent-700">
           View timesheets →
         </button>
       </div>

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { DocumentTextIcon, CheckIcon } from '@heroicons/react/24/outline';
 
 const InvoicesSection = () => {
-  const invoices = [
+  const [activeTab, setActiveTab] = useState('pending-approval');
+
+  const pendingInvoices = [
     {
       id: 'OY-ACME-1Js4tPG-0325-D-INV6',
       type: 'Deposit',
@@ -35,6 +37,42 @@ const InvoicesSection = () => {
     }
   ];
 
+  const overviewData = [
+    {
+      id: 'overview-1',
+      type: 'Total processed this month',
+      amount: 'USD 24,500.03',
+      status: 'processed'
+    },
+    {
+      id: 'overview-2',
+      type: 'Average processing time',
+      amount: '2.4 days',
+      status: 'metric'
+    },
+    {
+      id: 'overview-3',
+      type: 'Pending payment',
+      amount: 'USD 8,452.12',
+      status: 'pending'
+    }
+  ];
+
+  const currentData = activeTab === 'pending-approval' ? pendingInvoices : overviewData;
+
+  const tabs = [
+    { 
+      id: 'pending-approval', 
+      label: 'Pending approval', 
+      count: pendingInvoices.length 
+    },
+    { 
+      id: 'overview', 
+      label: 'Overview', 
+      count: null 
+    }
+  ];
+
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-6">
@@ -46,40 +84,45 @@ const InvoicesSection = () => {
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="flex space-x-6 mb-6">
-        <button className="flex items-center text-sm font-medium text-blue-600 border-b-2 border-blue-600 pb-2">
-          Pending approval
-          <span className="ml-2 bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">28</span>
-        </button>
-        <button className="text-sm font-medium text-gray-500 pb-2">
-          Overview
-        </button>
+      {/* Interactive Tabs */}
+      <div className="tab-container">
+        {tabs.map((tab) => (
+          <div
+            key={tab.id}
+            className={`tab-item ${activeTab === tab.id ? 'active' : 'inactive'}`}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+            {tab.count && <span className="tab-badge">{tab.count}</span>}
+          </div>
+        ))}
       </div>
 
-      {/* Invoice List */}
+      {/* Content List */}
       <div className="space-y-3">
-        {invoices.map((invoice) => (
-          <div key={invoice.id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+        {currentData.map((item) => (
+          <div key={item.id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
             <div className="flex items-center flex-1">
               <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center mr-3">
                 <DocumentTextIcon className="w-4 h-4 text-gray-600" />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-900">{invoice.id}</p>
-                <p className="text-xs text-gray-500">{invoice.type}</p>
+                <p className="text-sm font-medium text-gray-900">{item.id}</p>
+                <p className="text-xs text-gray-500">{item.type}</p>
               </div>
               <div className="text-right mr-3">
-                <p className="text-sm font-medium text-gray-900">{invoice.amount}</p>
+                <p className="text-sm font-medium text-gray-900">{item.amount}</p>
               </div>
-              <CheckIcon className="w-5 h-5 text-green-500" />
+              {activeTab === 'pending-approval' && (
+                <CheckIcon className="w-5 h-5 text-green-500" />
+              )}
             </div>
           </div>
         ))}
       </div>
 
       <div className="mt-4 text-center">
-        <button className="text-sm font-medium text-blue-600 hover:text-blue-700">
+        <button className="text-sm font-medium text-accent-600 hover:text-accent-700">
           View invoices →
         </button>
       </div>
