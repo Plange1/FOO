@@ -52,7 +52,7 @@ const DiscoverSection = () => {
             </div>
             <h3 className="text-sm font-medium text-gray-900 mb-2">{card.title}</h3>
             <p className="text-xs text-gray-500 mb-3">{card.description}</p>
-            <button className="text-xs font-medium text-accent-600 hover:text-accent-700 flex items-center">
+            <button className="btn btn-link text-xs">
               Learn more →
             </button>
           </div>
@@ -60,7 +60,7 @@ const DiscoverSection = () => {
       </div>
 
       <div className="mt-4 text-center">
-        <button className="text-sm font-medium text-accent-600 hover:text-accent-700">
+        <button className="btn btn-link">
           View more →
         </button>
       </div>

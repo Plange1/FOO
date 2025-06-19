@@ -122,7 +122,7 @@ const InvoicesSection = () => {
       </div>
 
       <div className="mt-4 text-center">
-        <button className="text-sm font-medium text-accent-600 hover:text-accent-700">
+        <button className="btn btn-link">
           View invoices →
         </button>
       </div>

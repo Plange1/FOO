@@ -129,10 +129,10 @@ const TimeOffSection = () => {
                 <p className="text-sm font-medium text-gray-900">{request.dates}</p>
                 <p className="text-xs text-gray-500">{request.duration}</p>
               </div>
-              <button className={`px-3 py-1 text-xs font-medium rounded ${
+              <button className={`btn btn-xs ${
                 activeTab === 'pending-requests' 
-                  ? 'text-gray-600 bg-white border border-gray-200 hover:bg-gray-50'
-                  : 'text-green-700 bg-green-50 border border-green-200'
+                  ? 'btn-secondary'
+                  : 'btn-success'
               }`}>
                 {request.action}
               </button>
@@ -142,7 +142,7 @@ const TimeOffSection = () => {
       </div>
 
       <div className="mt-4 text-center">
-        <button className="text-sm font-medium text-accent-600 hover:text-accent-700">
+        <button className="btn btn-link">
           View requests →
         </button>
       </div>

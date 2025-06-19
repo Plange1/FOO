@@ -95,8 +95,8 @@ const TimeTrackingSection = () => {
           </div>
           <h2 className="text-lg font-semibold text-gray-900">Time tracking</h2>
         </div>
-        <button className="flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 border border-gray-200 rounded-lg hover:bg-gray-50">
-          <CalendarIcon className="w-4 h-4 mr-2" />
+        <button className="btn btn-secondary btn-sm">
+          <CalendarIcon className="icon" />
           This month
         </button>
       </div>
@@ -139,7 +139,7 @@ const TimeTrackingSection = () => {
                   </span>
                 </div>
               )}
-              <button className="px-3 py-1 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded hover:bg-gray-50">
+              <button className="btn btn-secondary btn-xs">
                 {entry.action}
               </button>
             </div>
@@ -148,7 +148,7 @@ const TimeTrackingSection = () => {
       </div>
 
       <div className="mt-4 text-center">
-        <button className="text-sm font-medium text-accent-600 hover:text-accent-700">
+        <button className="btn btn-link">
           View timesheets →
         </button>
       </div>

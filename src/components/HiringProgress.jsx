@@ -82,8 +82,8 @@ const HiringProgress = () => {
           </div>
           <h2 className="text-lg font-semibold text-gray-900">Hiring progress</h2>
         </div>
-        <button className="flex items-center px-3 py-2 text-sm font-medium text-accent-600 hover:text-accent-700 border border-accent-200 rounded-lg hover:bg-accent-50">
-          <PlusIcon className="w-4 h-4 mr-2" />
+        <button className="btn btn-primary btn-sm">
+          <PlusIcon className="icon" />
           New hire
         </button>
       </div>
@@ -105,12 +105,12 @@ const HiringProgress = () => {
       {/* Task List */}
       <div className="space-y-3">
         {currentTasks.map((task) => (
-          <div key={task.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+          <div key={task.id} className="flex items-center justify-between p-3 rounded-lg">
             <div className="flex items-center flex-1">
               <div className="w-5 h-5 border-2 border-gray-300 rounded-full mr-3"></div>
               <span className="text-sm text-gray-700">{task.title}</span>
             </div>
-            <button className="px-3 py-1 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded hover:bg-gray-50">
+            <button className="btn btn-secondary btn-xs">
               {task.action}
             </button>
           </div>
@@ -118,7 +118,7 @@ const HiringProgress = () => {
       </div>
 
       <div className="mt-4 text-center">
-        <button className="text-sm font-medium text-accent-600 hover:text-accent-700">
+        <button className="btn btn-link">
           View hires →
         </button>
       </div>

@@ -124,7 +124,7 @@ const ExpensesSection = () => {
                   {expense.status}
                 </p>
               </div>
-              <button className="px-3 py-1 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded hover:bg-gray-50">
+              <button className="btn btn-secondary btn-xs">
                 {activeTab === 'pending' ? 'Review' : 'View'}
               </button>
             </div>
@@ -133,7 +133,7 @@ const ExpensesSection = () => {
       </div>
 
       <div className="mt-4 text-center">
-        <button className="text-sm font-medium text-accent-600 hover:text-accent-700">
+        <button className="btn btn-link">
           View expenses →
         </button>
       </div>
