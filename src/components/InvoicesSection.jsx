@@ -74,7 +74,7 @@ const InvoicesSection = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6">
+    <div className="bg-white rounded-lg border border-gray-200 p-6 h-[460px] flex flex-col">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
           <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3">
@@ -99,9 +99,9 @@ const InvoicesSection = () => {
       </div>
 
       {/* Content List */}
-      <div className="space-y-3">
+      <div className="space-y-3 flex-1 overflow-y-auto">
         {currentData.map((item) => (
-          <div key={item.id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+          <div key={item.id} className="flex items-center justify-between p-3 rounded-lg">
             <div className="flex items-center flex-1">
               <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center mr-3">
                 <DocumentTextIcon className="w-4 h-4 text-gray-600" />

@@ -89,7 +89,7 @@ const TimeOffSection = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6">
+    <div className="bg-white rounded-lg border border-gray-200 p-6 h-[460px] flex flex-col">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
           <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
@@ -114,7 +114,7 @@ const TimeOffSection = () => {
       </div>
 
       {/* Request List */}
-      <div className="space-y-4">
+      <div className="space-y-4 flex-1 overflow-y-auto">
         {currentRequests.map((request) => (
           <div key={request.id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
             <div className="flex items-center flex-1">

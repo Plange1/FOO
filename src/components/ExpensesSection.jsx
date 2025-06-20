@@ -82,7 +82,7 @@ const ExpensesSection = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6">
+    <div className="bg-white rounded-lg border border-gray-200 p-6 h-[460px] flex flex-col">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
           <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center mr-3">
@@ -107,7 +107,7 @@ const ExpensesSection = () => {
       </div>
 
       {/* Expense List */}
-      <div className="space-y-3">
+      <div className="space-y-3 flex-1 overflow-y-auto">
         {currentExpenses.map((expense) => (
           <div key={expense.id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
             <div className="flex items-center flex-1">

@@ -222,7 +222,7 @@ const Header = () => {
                             {/* Country Flag */}
                             <div className="absolute -bottom-0 -right-0 w-3 h-3 bg-blue-500 rounded-sm border border-white flex items-center justify-center">
                               <span className="text-[8px] text-white font-bold">
-                                {item.country === 'GB' ? '🇬🇧' : '🇺🇦'}
+                                {item.country}
                               </span>
                             </div>
                           </div>
