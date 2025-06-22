@@ -4,9 +4,17 @@ import { CalendarIcon } from '@heroicons/react/24/outline';
 const TimeOffSection = () => {
   const [activeTab, setActiveTab] = useState('pending-requests');
 
-  // Image assets from Figma
-  const imgBlob = "http://localhost:3845/assets/9e6a27f530b98679e92fef21d4d6cc97f3420a3b.svg";
-  const imgAustraliaAu = "http://localhost:3845/assets/fd8dddbfc9f906d539e7644ad3ca4e4b9ff54249.svg";
+  // Simple fallback for country flags
+  const getCountryFlag = (country) => {
+    const flags = {
+      'AU': '🇦🇺',
+      'US': '🇺🇸', 
+      'GB': '🇬🇧',
+      'CA': '🇨🇦',
+      'DE': '🇩🇪'
+    };
+    return flags[country] || '🌍';
+  };
 
   const pendingRequests = [
     {
@@ -17,7 +25,7 @@ const TimeOffSection = () => {
       dates: '3 - 15 March',
       duration: 'PTO - 12 days',
       action: 'Review',
-      flag: imgAustraliaAu
+      country: 'AU'
     },
     {
       id: 2,
@@ -27,7 +35,7 @@ const TimeOffSection = () => {
       dates: '8 - 13 Mar',
       duration: 'PTO - 5 days',
       action: 'Review',
-      flag: imgAustraliaAu
+      country: 'CA'
     },
     {
       id: 3,
@@ -37,7 +45,7 @@ const TimeOffSection = () => {
       dates: '11 - 19 Apr',
       duration: 'Sick leave - 8 days',
       action: 'Review',
-      flag: imgAustraliaAu
+      country: 'GB'
     },
     {
       id: 4,
@@ -47,7 +55,7 @@ const TimeOffSection = () => {
       dates: '11 - 19 Apr',
       duration: 'PTO - 8 days',
       action: 'Review',
-      flag: imgAustraliaAu
+      country: 'US'
     }
   ];
 
@@ -60,7 +68,7 @@ const TimeOffSection = () => {
       dates: '20 - 24 Feb',
       duration: 'PTO - 5 days',
       action: 'Approved',
-      flag: imgAustraliaAu
+      country: 'DE'
     },
     {
       id: 6,
@@ -70,7 +78,7 @@ const TimeOffSection = () => {
       dates: '15 - 22 Mar',
       duration: 'PTO - 6 days',
       action: 'Approved',
-      flag: imgAustraliaAu
+      country: 'AU'
     },
     {
       id: 7,
@@ -80,7 +88,7 @@ const TimeOffSection = () => {
       dates: '5 - 9 Apr',
       duration: 'PTO - 4 days',
       action: 'Approved',
-      flag: imgAustraliaAu
+      country: 'CA'
     }
   ];
 
@@ -100,11 +108,11 @@ const TimeOffSection = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6 h-[460px] flex flex-col">
+    <div className="bg-white rounded-[1rem] border border-[#e2e2e2] p-6 h-[460px] flex flex-col">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
-          <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-            <CalendarIcon className="w-4 h-4 text-blue-600" />
+          <div className="w-8 h-8 bg-white border border-[#e8e8e8] rounded-[12px] flex items-center justify-center mr-3">
+            <CalendarIcon className="w-4 h-4 text-[#5C6D7A]" />
           </div>
           <h2 className="text-lg font-semibold text-gray-900">Time off</h2>
         </div>
@@ -125,7 +133,7 @@ const TimeOffSection = () => {
       </div>
 
       {/* Request List - Pixel-perfect match to Figma */}
-      <div className="space-y-0 flex-1 overflow-y-auto">
+      <div className="space-y-0 flex-1 scrollable-content">
         {currentRequests.map((request) => (
           <div key={request.id} className="relative w-full" style={{ fontFamily: "'Inter', sans-serif" }}>
             <div className="flex flex-row items-center relative w-full">
@@ -133,46 +141,15 @@ const TimeOffSection = () => {
                 {/* Left section with avatar and user info */}
                 <div className="basis-0 grow min-h-px min-w-px relative shrink-0">
                   <div className="box-border flex flex-row gap-3 items-center justify-start p-0 relative w-full">
-                    {/* Avatar with flag overlay - exact positioning */}
-                    <div className="grid-cols-[max-content] grid-rows-[max-content] inline-grid leading-[0] place-items-start relative shrink-0">
-                      <div
-                        className="[grid-area:1_/_1] bg-[#d9e1fb] ml-0 mt-0 overflow-clip relative rounded-[32px]"
-                        style={{ width: '32px', height: '32px' }}
-                        data-name="avatar"
-                      >
-                        <div className="absolute bottom-[-3.576%] flex items-center justify-center left-[21.731%] right-[-90.993%] top-[-44.922%]">
-                          <div className="flex-none h-[45px] rotate-[2.838deg] w-[52px]">
-                            <div className="relative w-full h-full" data-name="Blob">
-                              <img
-                                alt=""
-                                className="block max-w-none w-full h-full"
-                                src={imgBlob}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          className="absolute font-medium leading-[0] not-italic text-[#2a375f] text-[14px] text-center text-nowrap tracking-[-0.14px] translate-x-[-50%]"
-                          style={{
-                            top: "calc(50% - 10px)",
-                            left: "calc(50% + 0.5px)",
-                            fontFamily: "'Inter', sans-serif"
-                          }}
-                        >
-                          <p className="block leading-[1.4] whitespace-pre">
-                            {request.avatar}
-                          </p>
-                        </div>
+                    {/* Avatar with flag overlay */}
+                    <div className="relative">
+                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                        <span className="text-blue-800 text-xs font-medium">
+                          {request.avatar}
+                        </span>
                       </div>
-                      <div
-                        className="[grid-area:1_/_1] h-3 ml-4 mt-5 relative w-4"
-                        data-name="Australia (AU)"
-                      >
-                        <img
-                          alt=""
-                          className="block max-w-none w-full h-full"
-                          src={request.flag}
-                        />
+                      <div className="absolute -bottom-1 -right-1 w-4 h-4 flex items-center justify-center text-xs bg-white rounded-full shadow-sm">
+                        {getCountryFlag(request.country)}
                       </div>
                     </div>
                     

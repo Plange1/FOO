@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PlusIcon, CheckCircleIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { PlusIcon, ClockIcon } from '@heroicons/react/24/outline';
 
 const HiringProgress = () => {
   const [activeTab, setActiveTab] = useState('for-you');
@@ -74,11 +74,11 @@ const HiringProgress = () => {
   ];
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6 h-[460px] flex flex-col">
+    <div className="bg-white rounded-[1rem] border border-[#e2e2e2] p-6 h-[460px] flex flex-col">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
-          <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center mr-3">
-            <ClockIcon className="w-4 h-4 text-gray-600" />
+          <div className="w-8 h-8 bg-white border border-[#e8e8e8] rounded-[12px] flex items-center justify-center mr-3">
+            <ClockIcon className="w-4 h-4 text-[#5C6D7A]" />
           </div>
           <h2 className="text-lg font-semibold text-gray-900">Hiring progress</h2>
         </div>
@@ -103,7 +103,7 @@ const HiringProgress = () => {
       </div>
 
       {/* Task List */}
-      <div className="space-y-3 flex-1 overflow-y-auto">
+      <div className="space-y-3 flex-1 scrollable-content">
         {currentTasks.map((task) => (
           <div key={task.id} className="flex items-center justify-between p-3 rounded-lg">
             <div className="flex items-center flex-1">

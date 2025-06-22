@@ -1,10 +1,7 @@
 import React from 'react';
-import { ChevronDownIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon, ArrowRightIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 const DiscoverSection = () => {
-  // Image asset from Figma
-  const imgFrame = "http://localhost:3845/assets/65fce12b417c76d239970b392f9755e9325cf4ff.svg";
-
   const cards = [
     {
       id: 1,
@@ -92,27 +89,15 @@ const DiscoverSection = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg border border-gray-200 p-6 h-[460px] flex flex-col">
-      <div className="flex items-center mb-6">
-        <div 
-          className="bg-[#ffffff] relative rounded-xl size-8 mr-3"
-          style={{
-            border: '1px solid #e8e8e8',
-            boxShadow: '0px 1px 80px 16px #fae6e8'
-          }}
-        >
-          <div className="flex flex-row items-center relative size-full">
-            <div className="box-border flex flex-row gap-2 items-center justify-start overflow-clip p-[8px] relative size-full">
-              <div className="relative shrink-0 size-5" data-name="Frame">
-                <img alt="" className="block max-w-none size-full" src={imgFrame} />
-              </div>
-            </div>
-          </div>
+          <div className="bg-white rounded-[1rem] border border-[#e2e2e2] p-6 h-[460px] flex flex-col">
+              <div className="flex items-center mb-6">
+         <div className="w-8 h-8 bg-white border border-[#e8e8e8] rounded-[12px] flex items-center justify-center mr-3">
+           <MagnifyingGlassIcon className="w-5 h-5 text-[#D64865]" />
         </div>
         <h2 className="text-lg font-semibold text-gray-900">Discover what's best for you</h2>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 overflow-y-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 scrollable-content">
         {cards.map((card) => (
           <div 
             key={card.id} 
