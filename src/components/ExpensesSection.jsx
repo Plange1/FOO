@@ -107,26 +107,64 @@ const ExpensesSection = () => {
       </div>
 
       {/* Expense List */}
-      <div className="space-y-3 flex-1 overflow-y-auto">
+      <div className="space-y-0 flex-1 overflow-y-auto">
         {currentExpenses.map((expense) => (
-          <div key={expense.id} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+          <div key={expense.id} className="flex items-center p-2">
             <div className="flex items-center flex-1">
-              <div className="w-8 h-8 bg-orange-100 rounded flex items-center justify-center mr-3">
-                <CreditCardIcon className="w-4 h-4 text-orange-600" />
+              {/* Icon Container */}
+              <div className="w-8 h-8 bg-[#f4f4f4] rounded-xl flex items-center justify-center mr-3">
+                <CreditCardIcon className="w-5 h-5 text-gray-600" />
               </div>
+              
+              {/* Content Container */}
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-900">{expense.title}</p>
-                <p className="text-xs text-gray-500">{expense.user}</p>
+                {/* Title */}
+                <div className="text-[14px] font-medium text-black leading-[1.3] tracking-[-0.14px] mb-1">
+                  {expense.title}
+                </div>
+                
+                {/* User Info */}
+                {expense.user && (
+                  <div className="flex items-center">
+                    {/* User Avatar */}
+                    <div className="w-4 h-4 bg-[#fae6e8] rounded-full flex items-center justify-center mr-1">
+                      <span className="text-[7px] font-medium text-[#3c1b30] leading-[1.4] tracking-[-0.07px]">
+                        {expense.user.includes('🔥') ? 'JA' : 
+                         expense.user.includes('😊') && expense.user.includes('Lewis') ? 'LB' :
+                         expense.user.includes('😊') && expense.user.includes('Aiko') ? 'AK' :
+                         expense.user.includes('💼') ? 'SC' :
+                         expense.user.includes('🍽️') ? 'MJ' :
+                         expense.user.includes('💻') ? 'DK' : 'JA'}
+                      </span>
+                    </div>
+                    {/* User Name */}
+                    <span className="text-[13px] font-normal text-[#5c6d7a] leading-[1.3] tracking-[-0.13px]">
+                      {expense.user.replace(/[🔥😊💼🍽️💻]/g, '').trim()}
+                    </span>
+                  </div>
+                )}
               </div>
-              <div className="text-right mr-3">
-                <p className="text-sm font-medium text-gray-900">{expense.amount}</p>
-                <p className={`text-xs ${activeTab === 'pending' ? 'text-orange-600' : 'text-green-600'}`}>
+            </div>
+            
+            {/* Right Side - Amount and Status */}
+            <div className="flex flex-col items-end gap-1">
+              {/* Amount */}
+              <div className="text-[14px] font-semibold text-gray-900 leading-[1.3] tracking-[-0.14px]">
+                {expense.amount}
+              </div>
+              
+              {/* Status Badge */}
+              <div className={`px-2 py-0.5 rounded-[27px] ${
+                activeTab === 'pending' 
+                  ? 'bg-[rgba(247,182,29,0.1)]' 
+                  : 'bg-[rgba(34,197,94,0.1)]'
+              }`}>
+                <span className={`text-[13px] font-normal leading-[20px] tracking-[-0.13px] ${
+                  activeTab === 'pending' ? 'text-[#845f07]' : 'text-[#166534]'
+                }`}>
                   {expense.status}
-                </p>
+                </span>
               </div>
-              <button className="btn btn-secondary btn-xs">
-                {activeTab === 'pending' ? 'Review' : 'View'}
-              </button>
             </div>
           </div>
         ))}

@@ -2,6 +2,9 @@ import React from 'react';
 import { ChevronDownIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 
 const DiscoverSection = () => {
+  // Image asset from Figma
+  const imgFrame = "http://localhost:3845/assets/65fce12b417c76d239970b392f9755e9325cf4ff.svg";
+
   const cards = [
     {
       id: 1,
@@ -91,8 +94,20 @@ const DiscoverSection = () => {
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-6 h-[460px] flex flex-col">
       <div className="flex items-center mb-6">
-        <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center mr-3">
-          <span className="text-red-600 text-lg">🎯</span>
+        <div 
+          className="bg-[#ffffff] relative rounded-xl size-8 mr-3"
+          style={{
+            border: '1px solid #e8e8e8',
+            boxShadow: '0px 1px 80px 16px #fae6e8'
+          }}
+        >
+          <div className="flex flex-row items-center relative size-full">
+            <div className="box-border flex flex-row gap-2 items-center justify-start overflow-clip p-[8px] relative size-full">
+              <div className="relative shrink-0 size-5" data-name="Frame">
+                <img alt="" className="block max-w-none size-full" src={imgFrame} />
+              </div>
+            </div>
+          </div>
         </div>
         <h2 className="text-lg font-semibold text-gray-900">Discover what's best for you</h2>
       </div>
