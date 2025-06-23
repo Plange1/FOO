@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { ClockIcon, CalendarIcon } from '@heroicons/react/24/outline';
 
+// Warning icon component - exact SVG from Figma
+const WarningIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7.134 2.75L1.384 12.5C1.23267 12.7733 1.15 13.08 1.15 13.392C1.15 13.704 1.23267 14.0107 1.384 14.284C1.53533 14.5573 1.75067 14.7873 2.01133 14.9533C2.272 15.1193 2.56733 15.216 2.87 15.234H14.37C14.6727 15.216 14.968 15.1193 15.2287 14.9533C15.4893 14.7873 15.7047 14.5573 15.856 14.284C16.0073 14.0107 16.09 13.704 16.09 13.392C16.09 13.08 16.0073 12.7733 15.856 12.5L10.106 2.75C9.95467 2.47667 9.73933 2.24667 9.47867 2.08067C9.218 1.91467 8.922 1.826 8.62 1.826C8.318 1.826 8.022 1.91467 7.76133 2.08067C7.50067 2.24667 7.28533 2.47667 7.134 2.75Z" fill="#F59E0B"/>
+    <path d="M8.62 11.5C8.88614 11.5 9.12 11.2761 9.12 11C9.12 10.7239 8.88614 10.5 8.62 10.5C8.35386 10.5 8.12 10.7239 8.12 11C8.12 11.2761 8.35386 11.5 8.62 11.5Z" fill="white"/>
+    <path d="M8.62 6V9" stroke="white" strokeWidth="1" strokeLinecap="round"/>
+  </svg>
+);
+
 const TimeTrackingSection = () => {
   const [activeTab, setActiveTab] = useState('pending-approval');
 
@@ -227,8 +236,8 @@ const TimeTrackingSection = () => {
                                     <div className="box-border flex flex-row gap-1 items-center justify-start p-0 relative">
                                       <div className="relative shrink-0">
                                         <div className="box-border flex flex-row gap-1 items-center justify-start p-0 relative">
-                                          <div className="w-4 h-4 flex items-center justify-center text-yellow-600">
-                                            ⚠️
+                                          <div className="w-4 h-4 flex items-center justify-center">
+                                            <WarningIcon />
                                           </div>
                                           <div
                                             className="font-normal justify-end leading-[0] not-italic relative shrink-0 text-[13px] text-left text-nowrap tracking-[-0.13px]"
