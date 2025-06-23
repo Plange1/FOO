@@ -6,7 +6,7 @@ const InvoicesSection = () => {
 
   const pendingInvoices = [
     {
-      id: 'OY-ACME-1Js4tPG-0325-D-INV6',
+      id: 'OY-ACME-itJs4tPG-0325-D-INV6',
       type: 'Deposit',
       amount: 'USD 1,052.58',
       status: 'approved'
@@ -74,7 +74,7 @@ const InvoicesSection = () => {
   ];
 
   return (
-    <div className="bg-white rounded-[1rem] border border-[#e2e2e2] p-6 h-[460px] flex flex-col">
+    <div className="bg-white rounded-[1rem] border border-[#efedeb] p-6 h-[460px] flex flex-col shadow-[0px_0px_2px_0px_rgba(0,0,0,0.05)]">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
           <div className="w-8 h-8 bg-white border border-[#e8e8e8] rounded-[12px] flex items-center justify-center mr-3">
@@ -101,20 +101,41 @@ const InvoicesSection = () => {
       {/* Content List */}
       <div className="space-y-3 flex-1 scrollable-content">
         {currentData.map((item) => (
-          <div key={item.id} className="flex items-center justify-between p-3 rounded-lg">
+          <div key={item.id} className="flex items-center justify-between p-2">
             <div className="flex items-center flex-1">
-              <div className="w-8 h-8 bg-gray-100 rounded flex items-center justify-center mr-3">
-                <DocumentTextIcon className="w-4 h-4 text-gray-600" />
+              {/* Invoice Icon Container - Pixel Perfect */}
+              <div className="w-9 h-9 bg-[#f4f4f4] rounded-xl flex items-center justify-center mr-3 p-2">
+                <DocumentTextIcon className="w-5 h-5 text-gray-600" />
               </div>
+              
+              {/* Invoice Details */}
               <div className="flex-1">
-                <p className="text-sm font-medium text-gray-900">{item.id}</p>
-                <p className="text-xs text-gray-500">{item.type}</p>
+                <p className="text-[14px] font-normal text-[#000000] leading-[1.3] tracking-[-0.14px]">
+                  {item.id}
+                </p>
+                <p className="text-[13px] font-normal text-[#5c6d7a] leading-[1.3] tracking-[-0.13px] mt-1">
+                  {item.type}
+                </p>
               </div>
+              
+              {/* Amount */}
               <div className="text-right mr-3">
-                <p className="text-sm font-medium text-gray-900">{item.amount}</p>
+                <p className="text-[14px] font-semibold text-[#171717] leading-[1.3] tracking-[-0.14px]">
+                  {item.amount}
+                </p>
               </div>
+              
+              {/* Check Icon - Pixel Perfect */}
               {activeTab === 'pending-approval' && (
-                <CheckIcon className="w-5 h-5 text-green-500" />
+                <div 
+                  className="w-9 h-9 bg-white rounded-[28px] flex items-center justify-center p-2 relative"
+                  style={{
+                    boxShadow: '0px -1px 4px 0px inset rgba(0,0,0,0.06)',
+                    border: '1px solid #e2e2e2'
+                  }}
+                >
+                  <CheckIcon className="w-5 h-5 text-gray-600" />
+                </div>
               )}
             </div>
           </div>

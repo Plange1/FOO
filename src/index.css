@@ -471,4 +471,9 @@ code {
   display: none;
 }
 
+/* Override for overflow-hidden class */
+.overflow-hidden {
+  background-color: #f0f2f5;
+}
+
  

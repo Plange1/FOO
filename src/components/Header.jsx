@@ -90,7 +90,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="w-full bg-[#f4f4f4] sticky top-0 z-50">
+      <header className="w-full bg-[#f0f2f5] sticky top-0 z-50">
         <div className="w-full px-6 py-4">
           <div className="flex items-center justify-between w-full">
             {/* Logo Section */}

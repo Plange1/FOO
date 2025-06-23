@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import MainContent from './MainContent';
+import TeamMembersPage from './TeamMembersPage';
 
 const Dashboard = () => {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const renderContent = () => {
+    switch (currentPage) {
+      case 'team-members':
+        return <TeamMembersPage />;
+      case 'home':
+      default:
+        return <MainContent />;
+    }
+  };
+
   return (
-    <div className="h-screen bg-gray-50 flex flex-col">
+    <div className="h-screen flex flex-col" style={{ backgroundColor: '#f0f2f5' }}>
       <Header />
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar />
-        <MainContent />
+        <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        {renderContent()}
       </div>
     </div>
   );

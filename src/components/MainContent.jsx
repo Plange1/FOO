@@ -8,7 +8,7 @@ import TimeTrackingSection from './TimeTrackingSection';
 
 const MainContent = () => {
   return (
-    <div className="flex-1 overflow-auto bg-[#F4F4F4]">
+    <div className="flex-1 overflow-auto bg-[#ffffff] border border-[#DEE0E4] rounded-[16px]">
       <div className="p-6">
         {/* Header */}
         <div className="flex justify-between items-center mb-8">

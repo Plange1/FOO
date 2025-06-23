@@ -82,7 +82,7 @@ const ExpensesSection = () => {
   ];
 
   return (
-    <div className="bg-white rounded-[1rem] border border-[#e2e2e2] p-6 h-[460px] flex flex-col">
+    <div className="bg-white rounded-[1rem] border border-[#efedeb] p-6 h-[460px] flex flex-col shadow-[0px_0px_2px_0px_rgba(0,0,0,0.05)]">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center">
           <div className="w-8 h-8 bg-white border border-[#e8e8e8] rounded-[12px] flex items-center justify-center mr-3">
@@ -112,7 +112,7 @@ const ExpensesSection = () => {
           <div key={expense.id} className="flex items-center p-2">
             <div className="flex items-center flex-1">
               {/* Icon Container */}
-              <div className="w-8 h-8 bg-[#f4f4f4] rounded-xl flex items-center justify-center mr-3">
+              <div className="w-8 h-8 bg-[#f0f2f5] rounded-xl flex items-center justify-center mr-3">
                 <CreditCardIcon className="w-5 h-5 text-gray-600" />
               </div>
               
