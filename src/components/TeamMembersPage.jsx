@@ -229,10 +229,10 @@ const TeamMembersPage = () => {
 
           {/* Table */}
           <div className="relative flex-1 overflow-hidden border border-[#f0f2f5] rounded-[12px]">
-            <div className="box-border content-stretch flex flex-row items-start justify-start overflow-clip p-0 relative size-full">
-              
-              {/* Team member column */}
-              <div className="relative flex-1" style={{ minWidth: '280px' }}>
+            {/* Scrollable table container */}
+            <div className="relative size-full">
+              {/* Fixed Team member column */}
+              <div className="absolute left-0 top-0 w-72 bg-white shadow-[2px_0px_4px_0px_rgba(0,0,0,0.08)] z-10">
                 <div className="box-border content-stretch flex flex-col items-start justify-center overflow-clip p-0 relative w-full">
                   {/* Header */}
                   <div className="bg-[#ffffff] h-11 relative shrink-0 w-full border-b border-[#f0f2f5]">
@@ -267,6 +267,10 @@ const TeamMembersPage = () => {
                   ))}
                 </div>
               </div>
+
+              {/* Main scrollable content */}
+              <div className="overflow-x-auto scrollbar-hide" style={{ paddingLeft: '288px', paddingRight: '80px' }}>
+                <div className="box-border content-stretch flex flex-row items-start justify-start p-0 relative" style={{ minWidth: '800px' }}>
 
               {/* Type column */}
               <div className="relative flex-1" style={{ minWidth: '200px' }}>
@@ -390,11 +394,14 @@ const TeamMembersPage = () => {
                 </div>
               </div>
 
-              {/* Action column */}
-              <div className="absolute right-0 shadow-[-2px_0px_2px_0px_rgba(0,0,0,0.04)] top-0">
+                </div>
+              </div>
+
+              {/* Fixed Action column */}
+              <div className="absolute right-0 top-0 w-20 bg-white shadow-[-2px_0px_4px_0px_rgba(0,0,0,0.08)] z-10">
                 <div className="box-border content-stretch flex flex-col items-start justify-center overflow-clip p-0 relative">
                   {/* Header */}
-                  <div className="bg-[#ffffff] h-11 relative shrink-0 border-b border-[#f0f2f5]">
+                  <div className="bg-[#ffffff] h-11 relative shrink-0 w-full border-b border-[#f0f2f5]">
                     <div className="flex flex-col justify-center overflow-clip relative size-full">
                       <div className="box-border content-stretch flex flex-col h-11 items-start justify-center px-4 py-3 relative">
                         <div className="font-['Inter'] font-medium leading-[0] not-italic relative shrink-0 text-[#5c6d7a] text-[14px] text-left tracking-[-0.14px] w-full">
@@ -424,7 +431,6 @@ const TeamMembersPage = () => {
                   ))}
                 </div>
               </div>
-
             </div>
           </div>
         </div>

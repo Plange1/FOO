@@ -476,4 +476,14 @@ code {
   background-color: #f0f2f5;
 }
 
+/* Hide scrollbar but keep functionality - for table horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
  
